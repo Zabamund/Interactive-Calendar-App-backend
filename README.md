@@ -1,7 +1,7 @@
 # Interactive-Calendar-App
 Group Project with Spring and React-Redux
 
-# Mockup (OOA)
+# First Mockup (OOA)
 Agile, first version aims at fully functional list of events (no calendar display yet in the first stage)
 ![](mockup_1.jpg)
 
@@ -24,7 +24,7 @@ Agile, first version aims at fully functional list of events (no calendar displa
 
 ## OOD
 
-![](ood_fields.jpg)
+![](ood_fields_1.jpg)
 
 ## OOP
 
