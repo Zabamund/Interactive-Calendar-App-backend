@@ -6,7 +6,7 @@ Agile, first version aims at fully functional list of events (no calendar displa
 ![](mockup_1.jpg)
 
 
-### Elements of bank application
+### Elements of calendar application
 
 * Event 
 * User
