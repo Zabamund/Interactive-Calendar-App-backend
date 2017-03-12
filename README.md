@@ -20,3 +20,4 @@ Agile, first version aims at fully functional list of events (no calendar displa
 ## OOP
 
 TBD ;)
+use `@JsonView` to avoid infinite recursion when the Jackson JSON mapper maps a `User` or `Tweet` object from the domain model into JSON.
