@@ -25,7 +25,7 @@ Agile, first version aims at fully functional list of events (no calendar displa
 ## OOD
 
 - Add Julie's file
-![](ood_fields_1.jpg)
+![](erDiagram.png)
 
 ## OOP
 
