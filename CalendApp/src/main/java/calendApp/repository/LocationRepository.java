@@ -6,17 +6,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import calendApp.domain.Location;
-
+/**
+*
+* @author Adrian Gross
+*/
 
 
 @Repository
 public interface LocationRepository extends JpaRepository<Location, Long> {
 
-	public Location findById(Long locationId);
+	public Location findById(Long Id);
 	
-	@Modifying
-	@Query("update location l set l.street= ?1 where l.locationId = ?2")
-	public void update(String street, Long locationId);
+
 	
 	
 

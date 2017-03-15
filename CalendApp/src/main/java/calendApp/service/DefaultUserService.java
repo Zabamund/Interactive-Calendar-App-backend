@@ -13,7 +13,10 @@ import calendApp.domain.User;
 import calendApp.repository.EventRepository;
 import calendApp.repository.UserRepository;
 
-
+/**
+*
+* @author Adrian Gross
+*/
 
 @Transactional(readOnly = true)
 @Service
@@ -30,21 +33,22 @@ public class DefaultUserService implements UserService {
 	
 	@Transactional(readOnly = false)
 	@Override
-	public void registerNewUser(User user) {
+	public User registerNewUser(User user) {
 		
 		// Make sure we are saving a new user and not accidentally 
 		// updating an existing user.
 		user.setUserId(null);
 		
 		// A new user cannot have events before the account exists.
-		user.getEvents().clear();
+		/*user.getEvents().clear();*/
 
 		this.userRepository.save(user);
+		return user;
 	}
 
 	@Override
 	public User findById(Long userId) {
-		return this.userRepository.findByUserId(userId);
+		return this.userRepository.findById(userId).get();
 	}
 
 	@Override
@@ -55,14 +59,18 @@ public class DefaultUserService implements UserService {
 
 	@Override
 	public void deleteById(Long userId) {
-		User user = this.userRepository.findByUserId(userId);
+		User user = userRepository.findById(userId).get();
 		this.userRepository.delete(user);
 		
 	}
-
 	@Override
+	public List<User> findAll() {
+		return this.userRepository.findAll();
+	}
+
+	/*@Override
 	public List<Event> findAllEventsOfUserById(Long userId) {
-		User user = this.userRepository.findByUserId(userId);
+		User user = this.userRepository.findByUserId(userId).get();
 		return user.getEvents();
 	}
 
@@ -77,18 +85,18 @@ public class DefaultUserService implements UserService {
 				}	
 				});
 		return newEventList;
-	}
+	}*/
 
 	
 	public void update(User user) {
-		this.userRepository.update(user.getFirstName(), user.getLastName());
+		this.userRepository.save(user);
 	}
 
-	@Override
+	/*@Override
 	public void joinEvent(Long userId,Long eventId) {
 
-			User user=  userRepository.findByUserId(userId);
-			Event event = eventRepository.findByEventId(eventId);
+			User user=  this.userRepository.findByUserId(userId).get();
+			Event event = this.eventRepository.findByEventId(eventId);
 			user.getEvents().add(event);
 			event.getParticipants().add(user);
 	}
@@ -96,12 +104,12 @@ public class DefaultUserService implements UserService {
 	@Override
 	public void leaveEvent(Long userId,Long eventId){
 
-	User user=  userRepository.findByUserId(userId);
-	Event event = eventRepository.findByEventId(eventId);
+	User user=  this.userRepository.findByUserId(userId).get();
+	Event event = this.eventRepository.findByEventId(eventId);
 	user.getEvents().remove(event);
 	event.getParticipants().remove(user);
 	
 	
-	}
+	}*/
 
 }

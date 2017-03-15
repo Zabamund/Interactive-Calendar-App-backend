@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -19,21 +20,28 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
+import lombok.ToString;
+/**
+*
+* @author Adrian Gross
+*/
 
 @Data
 @Entity
 @Table(name = "users")
-@EqualsAndHashCode(exclude = "userId")
+@EqualsAndHashCode(of = "email")
+@ToString(exclude = { "password" })
 public class User  implements Serializable{
 	
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String ENTITY_GRAPH_USER_WITH_ROLES = "UserWithRoles";
 
 	@Id
 	@JsonView(JsonViews.Public.class)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long userId;
+	private Long id;
 	
 	@Column(name="first_name", nullable = false, length = 50)
 	@JsonView(JsonViews.Public.class)
@@ -45,23 +53,24 @@ public class User  implements Serializable{
 	
 	@Column(name="location",nullable = true)
 	@JsonView(JsonViews.Public.class)
-	private Location location;
+	private Long location;
 	
 	@Column(name="email",nullable = false, length = 50)
 	@JsonView(JsonViews.Public.class)
 	private String email;
 	
 	@Column(name="password",nullable = false, length = 50)
-	@JsonView(JsonViews.Public.class)
+	@JsonView(JsonViews.NewUser.class)
 	private String password;
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	@OrderBy("date")
-	private List<Event> events = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	/*@ManyToMany(cascade = CascadeType.ALL)
+	@OrderBy("date")
+	private List<Event> events = new ArrayList<>();*/
+	
+	/*@ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
 	@OrderBy("lastName")
-	private List<User> friends = new ArrayList<>();
+	private List<User> friends = new ArrayList<>();*/
 	
 	
 	
@@ -70,31 +79,28 @@ public class User  implements Serializable{
 	}
 
 
-	public User(String firstName, String lastName, Location location, String email, String password,
-			List<Event> events, List<User> friends) {
-		this(null, firstName,  lastName,  location,  email,  password,
-				 events,  friends);
+	public User(String firstName, String lastName, Long location, String email, String password) {
+		this(null, firstName,  lastName,  location,  email,  password);
 	}
 	
-	public User(Long userId, String firstName, String lastName, Location location, String email, String password,
-			List<Event> events, List<User> friends) {
-		this.userId = userId;
+	public User(Long userId, String firstName, String lastName, Long location, String email, String password) {
+		this.id = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.location = location;
 		this.email = email;
 		this.password = password;
-		this.events = events;
-		this.friends = friends;
+		/*this.events = events;*/
+		/*this.friends = friends;*/
 	}
 
 
 	public Long getId() {
-		return userId;
+		return id;
 	}
 
 	public void setId(Long id) {
-		this.userId = id;
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -115,21 +121,21 @@ public class User  implements Serializable{
 
 
 	public Long getUserId() {
-		return userId;
+		return id;
 	}
 
 
 	public void setUserId(Long userId) {
-		this.userId = userId;
+		this.id = userId;
 	}
 
 
-	public Location getLocation() {
+	public Long getLocation() {
 		return location;
 	}
 
 
-	public void setLocation(Location location) {
+	public void setLocation(Long location) {
 		this.location = location;
 	}
 
@@ -154,7 +160,7 @@ public class User  implements Serializable{
 	}
 
 
-	public List<Event> getEvents() {
+	/*public List<Event> getEvents() {
 		return events;
 	}
 
@@ -171,7 +177,7 @@ public class User  implements Serializable{
 
 	public void setFriends(List<User> friends) {
 		this.friends = friends;
-	}
+	}*/
 
 
 	

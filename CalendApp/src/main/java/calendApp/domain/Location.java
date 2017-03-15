@@ -14,7 +14,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
+/**
+*
+* @author Adrian Gross
+*/
 
 @Data
 @Entity
@@ -28,20 +31,19 @@ public class Location  implements Serializable{
 	@Id
 	@JsonView(JsonViews.Public.class)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long locationId;
+	private Long id;
 	
 	@Column(name="street", nullable = false, length = 50)
 	@JsonView(JsonViews.Public.class)
 	private String street;
 	
-	@Column(name="streetNO",nullable = false, length = 20)
+	@Column(name="streetno",nullable = false, length = 20)
 	@JsonView(JsonViews.Public.class)
-	private String streetNO;
+	private String streetno;
 	
-	
-	@Column(name="postalCode",nullable = false, length = 50)
+	@Column(name="postalcode",nullable = false, length = 50)
 	@JsonView(JsonViews.Public.class)
-	private String postalCode;
+	private String postalcode;
 	
 	@Column(name="city",nullable = false, length = 50)
 	@JsonView(JsonViews.Public.class)
@@ -66,8 +68,8 @@ public class Location  implements Serializable{
 			String longitude) {
 		super();
 		this.street = street;
-		this.streetNO = streetNO;
-		this.postalCode = postalCode;
+		this.streetno = streetNO;
+		this.postalcode = postalCode;
 		this.city = city;
 		this.country = country;
 		this.latitude = latitude;
@@ -77,10 +79,10 @@ public class Location  implements Serializable{
 	public Location(Long locationId, String street, String streetNO, String postalCode, String city, String country, String latitude,
 			String longitude) {
 		super();
-		this.locationId = locationId;
+		this.id = locationId;
 		this.street = street;
-		this.streetNO = streetNO;
-		this.postalCode = postalCode;
+		this.streetno = streetNO;
+		this.postalcode = postalCode;
 		this.city = city;
 		this.country = country;
 		this.latitude = latitude;
@@ -88,11 +90,11 @@ public class Location  implements Serializable{
 	}
 
 	public Long getLocationId() {
-		return locationId;
+		return id;
 	}
 
 	public void setLocationId(Long locationId) {
-		this.locationId = locationId;
+		this.id = locationId;
 	}
 
 	public String getStreet() {
@@ -104,19 +106,19 @@ public class Location  implements Serializable{
 	}
 
 	public String getStreetNO() {
-		return streetNO;
+		return streetno;
 	}
 
 	public void setStreetNO(String streetNO) {
-		this.streetNO = streetNO;
+		this.streetno = streetNO;
 	}
 
 	public String getPostalCode() {
-		return postalCode;
+		return postalcode;
 	}
 
 	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+		this.postalcode = postalCode;
 	}
 
 	public String getCity() {
