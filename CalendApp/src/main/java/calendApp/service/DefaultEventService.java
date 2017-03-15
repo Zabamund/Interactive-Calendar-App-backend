@@ -11,7 +11,10 @@ import calendApp.domain.Event;
 import calendApp.domain.Location;
 import calendApp.domain.User;
 import calendApp.repository.EventRepository;
-
+/**
+*
+* @author Adrian Gross
+*/
 
 @Transactional(readOnly = true)
 @Service
@@ -26,14 +29,15 @@ public class DefaultEventService implements EventService {
 
 	@Transactional(readOnly = false)
 	@Override
-	public void registerNewEvent(Event event) {
+	public Event registerNewEvent(Event event) {
 		this.eventRepository.save(event);
+		return event;
 		
 	}
 
 	@Override
-	public Event findByEventId(Long eventId) {
-		return this.eventRepository.findByEventId(eventId);
+	public Event findById(Long eventId) {
+		return this.eventRepository.findById(eventId);
 	}
 
 	@Override
@@ -48,8 +52,8 @@ public class DefaultEventService implements EventService {
 	}
 
 	@Override
-	public List<User> findAllParticipantsByEventId(Long eventId) {
-		return this.eventRepository.findAllParticipantsByEventId(eventId);
+	public List<User> findAllParticipantsById(Long eventId) {
+		return this.eventRepository.findAllParticipantsById(eventId);
 	}
 
 	@Override
@@ -64,8 +68,13 @@ public class DefaultEventService implements EventService {
 
 	@Override
 	public void update(Event event) {
-	this.eventRepository.update(event.getEventName(), event.getEventId());
+	this.eventRepository.save(event);
 		
+	}
+
+	@Override
+	public List<Event> findAll() {
+		return this.eventRepository.findAll();
 	}
 
 }

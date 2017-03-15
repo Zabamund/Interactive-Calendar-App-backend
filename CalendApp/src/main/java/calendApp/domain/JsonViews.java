@@ -16,7 +16,10 @@
 
 package calendApp.domain;
 
-
+/**
+*
+* @author Adrian Gross
+*/
 
 public interface JsonViews {
 

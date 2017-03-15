@@ -6,7 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import calendApp.domain.Location;
 import calendApp.repository.LocationRepository;
-
+/**
+*
+* @author Adrian Gross
+*/
 @Transactional(readOnly = true)
 @Service
 public class DefaultLocationService implements LocationService {
@@ -20,28 +23,28 @@ public class DefaultLocationService implements LocationService {
 	}
 
 	@Override
-	public Location findById(Long locationId) {
+	public Location findById(Long Id) {
 
-		return locationRepository.findById(locationId);
+		return this.locationRepository.findById(Id);
 	}
 
 	@Override
-	public void update(String street, Long locationId) {
+	public void update(Location location) {
 
-		locationRepository.update(street, locationId);
+		this.locationRepository.save(location);
 
 	}
 
 	@Override
 	public void createLocation(Location location) {
-		locationRepository.save(location);
+		this.locationRepository.save(location);
 
 	}
 
 	@Override
-	public void deleteById(Long locationId) {
+	public void deleteById(Long Id) {
 
-		locationRepository.delete(locationId);
+		this.locationRepository.delete(Id);
 
 	}
 

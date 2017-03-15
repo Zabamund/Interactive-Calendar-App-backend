@@ -3,32 +3,31 @@ package calendApp.repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import calendApp.domain.Event;
 import calendApp.domain.User;
-
+/**
+*
+* @author Adrian Gross
+*/
 
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	
-	public User findByUserId(Long userId);
+	Optional<User> findById(Long id);
 	
-	public void deleteByUserId(Long userId);
+	public void deleteById(Long userId);
 
-	@Modifying
-	@Query("update User u set u.firstname = ?1 where u.userId = ?2")
-	public void update(String firstName,String userId);
 	
 	public User findByFirstNameAndLastName(String firstName, String lastName);
 
-	public List<Event> findAllByUserId(Long userId);
+	public List<Event> findAllById(Long Id);
 	
 
 }

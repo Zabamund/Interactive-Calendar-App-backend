@@ -43,13 +43,13 @@ insert into location(Id,street,streetno,postalcode,city,country,latitude,longitu
 insert into location(Id,street,streetno,postalcode,city,country,latitude,longitude) values (16,'Alphaweg',122,80045,'LalaCity','LalaLand','','');
 
 
-insert into events(Id, event_name, creator, date,time, location,  description, open) values (1,'DanceNight', 10, '2017-01-01', '00:00:00',12, 'Happy New Year!',true);
+insert into events(Id, eventName, creator, date, location,  description, open) values (1,'DanceNight', 10, {ts '2017-01-01 00:00:00'},12, 'Happy New Year!',true);
 
-insert into events(Id, event_name, creator, date,time, location,  description, open) values (2,'Dinner', 9, '2017-02-14', '11:00:00.00',13, 'Happy Valentine''s Day!',false);
+insert into events(Id, eventName, creator, date, location,  description, open) values (2,'Dinner', 9, {ts '2017-02-14 00:00:00.00'},13, 'Happy Valentine''s Day!',false);
 
-insert into events(Id, event_name, creator, date,time, location,  description, open) values (3,'Swinging', 8, '2017-03-01', '9:00:00.00',14,  'Sometimes all you need is Lupe and Latex!',true);
+insert into events(Id, eventName, creator, date, location,  description, open) values (3,'Swinging', 8, {ts '2017-03-01 00:00:00.00'},14,  'Sometimes all you need is Lupe and Latex!',true);
 
-insert into events(Id, event_name, creator, date,time, location,  description, open) values (4,'Consume Coke', 7,'2017-03-01', '5:00:00.00',15, 'I mean the white Stuff. Heard it tastes like Lemon...',false);
+insert into events(Id, eventName, creator, date, location,  description, open) values (4,'Consume Coke', 7, {ts '2017-03-01 00:00:00.00'},15, 'I mean the white Stuff. Heard it tastes like Lemon...',false);
 
-insert into events(Id, event_name, creator, date,time, location,  description, open) values (5,'Love a Squirrel', 6,'2017-03-01', '3:00:00.00',16, 'I want to touch da sqawow *honeybobo 2012*',true);
+insert into events(Id, eventName, creator, date, location,  description, open) values (5,'Love a Squirrel', 6, {ts '2017-03-01 00:00:00.00'},16, 'I want to touch da sqawow *honeybobo 2012*',true);
 
