@@ -14,15 +14,26 @@ import calendApp.domain.User;
 public interface UserService {
 
 	public User findById(Long id);
+<<<<<<< HEAD
+	
+	public List<User> findAll();
+=======
+>>>>>>> master
 	
 	public void deleteById(Long userId);
 
 	public User findByFirstNameAndLastName(String firstName, String lastName);
 
 	
+<<<<<<< HEAD
+	public List<Event> findAllEventsOfUserByDate(Long userId, LocalDate date);
+	
+	public User registerNewUser(User user);
+=======
 	public User registerNewUser(User user);
 	
 	public void update(User User);
+>>>>>>> master
 	
 	public List<User> findAll();
 	
@@ -35,5 +46,13 @@ public interface UserService {
 	
 	public void leaveEvent(Long userId,Long eventId);
 	
+<<<<<<< HEAD
+	public void addFriend(Long userId,Long friendId);
+	
+	public void removeFriend(Long userId,Long friendId);
+	
+
+=======
 */
+>>>>>>> master
 }

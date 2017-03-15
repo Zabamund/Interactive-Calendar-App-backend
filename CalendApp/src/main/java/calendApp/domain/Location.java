@@ -22,7 +22,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @Table(name = "location")
-@EqualsAndHashCode(exclude = "locationId")
+@EqualsAndHashCode(exclude = "id")
 public class Location  implements Serializable{
 	
 
@@ -37,9 +37,15 @@ public class Location  implements Serializable{
 	@JsonView(JsonViews.Public.class)
 	private String street;
 	
+<<<<<<< HEAD
+	@Column(name="streetNO",nullable = false, length = 50)
+	@JsonView(JsonViews.Public.class)
+	private String streetNO;
+=======
 	@Column(name="streetno",nullable = false, length = 20)
 	@JsonView(JsonViews.Public.class)
 	private String streetno;
+>>>>>>> master
 	
 	@Column(name="postalcode",nullable = false, length = 50)
 	@JsonView(JsonViews.Public.class)
@@ -76,10 +82,14 @@ public class Location  implements Serializable{
 		this.longitude = longitude;
 	}
 	
-	public Location(Long locationId, String street, String streetNO, String postalCode, String city, String country, String latitude,
+	public Location(Long id, String street, String streetNO, String postalCode, String city, String country, String latitude,
 			String longitude) {
 		super();
+<<<<<<< HEAD
+		this.id = id;
+=======
 		this.id = locationId;
+>>>>>>> master
 		this.street = street;
 		this.streetno = streetNO;
 		this.postalcode = postalCode;
@@ -89,12 +99,21 @@ public class Location  implements Serializable{
 		this.longitude = longitude;
 	}
 
+<<<<<<< HEAD
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+=======
 	public Long getLocationId() {
 		return id;
 	}
 
 	public void setLocationId(Long locationId) {
 		this.id = locationId;
+>>>>>>> master
 	}
 
 	public String getStreet() {

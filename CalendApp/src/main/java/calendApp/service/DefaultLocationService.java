@@ -29,6 +29,8 @@ public class DefaultLocationService implements LocationService {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
 	public void update(Location location) {
 
 		this.locationRepository.save(location);
@@ -36,6 +38,7 @@ public class DefaultLocationService implements LocationService {
 	}
 
 	@Override
+>>>>>>> master
 	public void createLocation(Location location) {
 		this.locationRepository.save(location);
 

@@ -56,7 +56,11 @@ public class RestEventController {
 
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest().path("/register")
+<<<<<<< HEAD
+				.buildAndExpand(savedevent.getId()).toUri();
+=======
 				.buildAndExpand(savedevent.getEventId()).toUri();
+>>>>>>> master
 		return ResponseEntity.created(location).build();
 	}
 

@@ -16,21 +16,34 @@ public interface EventService {
 		
 		public Event registerNewEvent(Event event);
 
+<<<<<<< HEAD
+		public Event findById(Long eventId);
+		
+		public List<Event> findAll();
+=======
 		Event findById(Long eventId);
+>>>>>>> master
 		
 		public void deleteById(Long eventId);
 
-		Event findByEventName(String eventName);
+		public Event findByEventName(String eventName);
 		
 		public List<User> findAllParticipantsById(Long eventId);
 		
 		public List<Event> findAllEventsByLocation(Location location);
 		
 		public List<Event> findAllEventsByDate(LocalDate date);
+<<<<<<< HEAD
+=======
 		
 		public List<Event> findAll();
 		
 		public void update(Event event);
 		
+>>>>>>> master
 
 	}
+
+
+
+

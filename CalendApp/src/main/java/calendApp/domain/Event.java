@@ -1,6 +1,5 @@
 package calendApp.domain;
 
-
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -11,23 +10,39 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
+=======
+>>>>>>> master
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+<<<<<<< HEAD
+import lombok.ToString;
+=======
 /**
 *
 * @author Adrian Gross
 */
+>>>>>>> master
 
 @Data
 @Entity
 @Table(name = "events")
 @EqualsAndHashCode(exclude = "id")
+<<<<<<< HEAD
+@ToString(exclude = { "participants", "creator" })
+public class Event implements Serializable {
+=======
 public class Event  implements Serializable {
 	
+>>>>>>> master
 
 	private static final long serialVersionUID = 1L;
 
@@ -35,6 +50,18 @@ public class Event  implements Serializable {
 	@JsonView(JsonViews.Public.class)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+<<<<<<< HEAD
+
+	@Column(name = "event_name", nullable = false, length = 50)
+	@JsonView(JsonViews.Public.class)
+	private String eventName;
+
+	@ManyToOne(targetEntity = User.class, optional = false)
+	private User creator;
+
+	// yyyy-MM-dd.
+	@Column(name = "date", nullable = false)
+=======
 	
 	@Column(name="event_name", nullable = false, length = 50)
 	@JsonView(JsonViews.Public.class)
@@ -46,12 +73,25 @@ public class Event  implements Serializable {
 	private Long creator;
 	
 	@Column(name="date",nullable = false)
+>>>>>>> master
 	@JsonView(JsonViews.Public.class)
 	private LocalDate date;
-	
-	@Column(name="time",nullable = false)
+
+	// hh:mm:ss
+	@Column(name = "time", nullable = false)
 	@JsonView(JsonViews.Public.class)
 	private LocalTime time;
+<<<<<<< HEAD
+
+	@Column(name = "description", nullable = false, length = 100)
+	@JsonView(JsonViews.Public.class)
+	private String description;
+
+	@OneToMany
+	@OrderBy("last_name")
+	private List<User> participants = new ArrayList<>();
+
+=======
 	
 	
 	@Column(name="description",nullable = false, length = 100)
@@ -66,13 +106,14 @@ public class Event  implements Serializable {
 	
 	
 	@Column(name="location",nullable = false)
+>>>>>>> master
 	@JsonView(JsonViews.Public.class)
-	private Long location;
+	@OneToOne
+	private Location location;
 
-	
-	@Column(name="open",nullable = false)
+	@Column(name = "open", nullable = false)
 	@JsonView(JsonViews.Public.class)
-	private Boolean open;
+	private boolean open;
 
 	
 	
@@ -80,6 +121,17 @@ public class Event  implements Serializable {
 	
 	public Event() {
 	}
+<<<<<<< HEAD
+
+	public Event(String eventName, User creator, LocalDate date, LocalTime time, String description,
+			List<User> participants, Location location, Boolean open) {
+		this(null, eventName, creator, date, time, description, participants, location, open);
+	}
+
+	public Event(Long id, String eventName, User creator, LocalDate date, LocalTime time, String description,
+			List<User> participants, Location location, Boolean open) {
+		this.id = id;
+=======
 	
 	public Event(String eventName, Long creator, LocalDate date,LocalTime time, String description,
 			 Long locationId, Boolean open) {
@@ -90,11 +142,25 @@ public class Event  implements Serializable {
 	public Event(Long eventId, String eventName, Long creator, LocalDate date, LocalTime time, String description,
 			 Long locationId, Boolean open) {
 		this.id = eventId;
+>>>>>>> master
 		this.eventName = eventName;
 		this.creator = creator;
 		this.date = date;
 		this.time = time;
 		this.description = description;
+<<<<<<< HEAD
+		this.participants = participants;
+		this.location = location;
+		this.open = open;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+=======
 		//this.participants = participants;
 		this.location = locationId;
 		this.open = open;
@@ -106,6 +172,7 @@ public class Event  implements Serializable {
 
 	public void setEventId(Long eventId) {
 		this.id = eventId;
+>>>>>>> master
 	}
 
 	public String getEventName() {
@@ -169,12 +236,17 @@ public class Event  implements Serializable {
 	public void setParticipants(List<User> participants) {
 		this.participants = participants;
 	}
+<<<<<<< HEAD
+
+	public Location getLocation() {
+=======
 */
 	public Long getLocation() {
+>>>>>>> master
 		return location;
 	}
 
-	public void setLocation(Long location) {
+	public void setLocation(Location location) {
 		this.location = location;
 	}
 
@@ -185,7 +257,5 @@ public class Event  implements Serializable {
 	public void setOpen(Boolean open) {
 		this.open = open;
 	}
-	
-	
+
 }
-	

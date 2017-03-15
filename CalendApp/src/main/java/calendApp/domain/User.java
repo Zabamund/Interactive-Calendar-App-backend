@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
@@ -21,16 +22,25 @@ import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+<<<<<<< HEAD
+
+=======
 /**
 *
 * @author Adrian Gross
 */
+>>>>>>> master
 
 @Data
 @Entity
 @Table(name = "users")
+<<<<<<< HEAD
+@EqualsAndHashCode(exclude = "id")
+@ToString(exclude = { "events", "friends" })
+=======
 @EqualsAndHashCode(of = "email")
 @ToString(exclude = { "password" })
+>>>>>>> master
 public class User  implements Serializable{
 	
 
@@ -51,30 +61,45 @@ public class User  implements Serializable{
 	@JsonView(JsonViews.Public.class)
 	private String lastName;
 	
-	@Column(name="location",nullable = true)
 	@JsonView(JsonViews.Public.class)
+<<<<<<< HEAD
+	@OneToOne
+	private Location location;
+=======
 	private Long location;
+>>>>>>> master
 	
 	@Column(name="email",nullable = false, length = 50)
 	@JsonView(JsonViews.Public.class)
 	private String email;
 	
+<<<<<<< HEAD
+	@Column(name="password",nullable = false, length = 76)
+	@JsonView(JsonViews.Public.class)
+	private String password;
+	
+	@OneToMany(mappedBy ="creator",cascade=CascadeType.ALL)
+=======
 	@Column(name="password",nullable = false, length = 50)
 	@JsonView(JsonViews.NewUser.class)
 	private String password;
 	
 	
 	/*@ManyToMany(cascade = CascadeType.ALL)
+>>>>>>> master
 	@OrderBy("date")
 	private List<Event> events = new ArrayList<>();*/
 	
+<<<<<<< HEAD
+	@OneToMany
+	@OrderBy("last_name")
+	private List<User> friends = new ArrayList<>();
+=======
 	/*@ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
 	@OrderBy("lastName")
 	private List<User> friends = new ArrayList<>();*/
+>>>>>>> master
 	
-	
-	
-
 	public User() {
 	}
 
@@ -83,8 +108,14 @@ public class User  implements Serializable{
 		this(null, firstName,  lastName,  location,  email,  password);
 	}
 	
+<<<<<<< HEAD
+	public User(Long id, String firstName, String lastName, Location location, String email, String password,
+			List<Event> events, List<User> friends) {
+		this.id = id;
+=======
 	public User(Long userId, String firstName, String lastName, Long location, String email, String password) {
 		this.id = userId;
+>>>>>>> master
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.location = location;
@@ -120,6 +151,8 @@ public class User  implements Serializable{
 	}
 
 
+<<<<<<< HEAD
+=======
 	public Long getUserId() {
 		return id;
 	}
@@ -129,6 +162,7 @@ public class User  implements Serializable{
 		this.id = userId;
 	}
 
+>>>>>>> master
 
 	public Long getLocation() {
 		return location;
